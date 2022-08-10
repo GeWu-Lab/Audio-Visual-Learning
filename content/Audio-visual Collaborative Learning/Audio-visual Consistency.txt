@@ -1,0 +1,18 @@
+# Motivation and Goal
+## Audio-visual associations provides natural supervision.
+
+
+# Development Route
+## Arandjelovi\'{c} et al. [1] employed this audio-visual semantic consistency and proposed the Audio-Visual Correspondence (AVC) learning framework whose goal is to determine whether the audio input and visual input are from the same video to joint train the audio and visual encoders from scratch.
+## Korbar et al. [2] further proposed the Audio-Visual Temporal Synchronization (AVTS) framework, which conceptually differs from AVC although also uses the audio-visual consistency nature as supervision. The aim of AVTS framework is to decide whether a given audio input and a visual input are either in-sync or out-of-sync, considering the more strict audio-visual consistency in temporal. 
+## Morgado et al. [3] leverage the audio-visual spatial consistency between $360^{\circ}$ video and spatial audio as supervision to learn audio-visual representation, revealing advantage on a variety of downstream tasks. 
+## Some recent methods jointly took the inter- and intra-modal semantic consistency into consideration with the contrastive learning scheme [4,5]. 
+## Correspondingly, Lin et al. [6] designed a fine-grained contrastive representation learning algorithm that takes the sounding area in visual and corresponding audio as the positive pairs to avoid the disruption of the noisy background. 
+
+
+[1] [Look, Listen and Learn](https://openaccess.thecvf.com/content_iccv_2017/html/Arandjelovic_Look_Listen_and_ICCV_2017_paper.html)
+[2] [Cooperative Learning of Audio and Video Models from Self-Supervised Synchronization](https://proceedings.neurips.cc/paper/2018/hash/c4616f5a24a66668f11ca4fa80525dc4-Abstract.html)
+[3] [Learning Representations from Audio-Visual Spatial Alignment](https://proceedings.neurips.cc/paper/2020/hash/328e5d4c166bb340b314d457a208dc83-Abstract.html)
+[4] [Audio-Visual Instance Discrimination with Cross-Modal Agreement](https://openaccess.thecvf.com/content/CVPR2021/html/Morgado_Audio-Visual_Instance_Discrimination_with_Cross-Modal_Agreement_CVPR_2021_paper.html)
+[5] [Robust Audio-Visual Instance Discrimination](https://openaccess.thecvf.com/content/CVPR2021/html/Morgado_Robust_Audio-Visual_Instance_Discrimination_CVPR_2021_paper.html)
+[6] [Unsupervised Sound Localization via Iterative Contrastive Learning](https://arxiv.org/abs/2104.00315)

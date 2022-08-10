@@ -1,0 +1,28 @@
+# Motivation and Goal
+## Modelling human cross-modal perception.
+## Localizing the sounding area in the videos.
+
+
+# Development Route
+## Early attempts on this task used shallow probabilistic models [1,2] or CCA-related methods [3] to associate audio and visual signal. 
+## Recently, the flourish of deep neural networks empower the audio-visual representation quality, bringing this task into a new stage. One of the typical training schemes is to use the AVC framework to learn audio-visual correlation [4,5,6].
+## To further improve localization quality, Chen et al. [7] further explicitly considered the noisy background as the negative region to obtain localization results from coarse to fine. However, these methods mostly work well in simple single-source scenarios while is hard to handle the cocktail-party scenario with multiple sounding sources. 
+## To overcome multi-source scenarios, the audio-visual source separation objective is combined with localization task [8,9]. Zhao et al. [8] employed a mix-then-separate framework to generate correspondence between pixels and separated audio signals. 
+## Besides that, Deep Multimodal Clustering (DMC) model is proposed to first cluster components of each modality, then associate each audio centre with its corresponding visual components [10], while Hu et al. [11] formulated the image and sound as a graph and adopted a cycle-consistent random walk strategy for separating as well as localizing mixed sounds.
+## Since the above methods only locate the sounding area in videos but do not have the discriminative ability, Hu et al. [12] employed the clustering method to establish a category-representation object dictionary and conducted class-aware sounding object localization in multiple sounding source cases. 
+## In addition, the sounding object localization task often only captures the coarse object shape in the self-supervised manner, Zhou et al. [13] further released a segmentation dataset with pixel-level localization map labels and introduced the audio-visual segmentation task, whose goal is to predict a pixel-level sounding localization map.
+
+
+[1] [Audio Vision: Using Audio-Visual Synchrony to Locate Sounds](https://proceedings.neurips.cc/paper/1999/hash/b618c3210e934362ac261db280128c22-Abstract.html)
+[2] [Pixels that sound](https://ieeexplore.ieee.org/document/1467253)
+[3] [Multimodal Analysis for Identification and Segmentation of Moving-Sounding Objects](https://ieeexplore.ieee.org/document/6357311/)
+[4] [Objects that Sound](https://openaccess.thecvf.com/content_ECCV_2018/html/Relja_Arandjelovic_Objects_that_Sound_ECCV_2018_paper.html)
+[5] [Audio-Visual Scene Analysis with Self-Supervised Multisensory Features](https://openaccess.thecvf.com/content_ECCV_2018/html/Andrew_Owens_Audio-Visual_Scene_Analysis_ECCV_2018_paper.html)
+[6] [Learning to Localize Sound Sources in Visual Scenes: Analysis and Applications](https://ieeexplore.ieee.org/abstract/document/8894565/)
+[7] [Localizing Visual Sounds the Hard Way](https://openaccess.thecvf.com/content/CVPR2021/html/Chen_Localizing_Visual_Sounds_the_Hard_Way_CVPR_2021_paper.html)
+[8] [The Sound of Pixels](https://openaccess.thecvf.com/content_ECCV_2018/html/Hang_Zhao_The_Sound_of_ECCV_2018_paper.html)
+[9] [The Sound of Motions](https://openaccess.thecvf.com/content_ICCV_2019/html/Zhao_The_Sound_of_Motions_ICCV_2019_paper.html)
+[10] [Deep Multimodal Clustering for Unsupervised Audiovisual Learning](https://openaccess.thecvf.com/content_CVPR_2019/html/Hu_Deep_Multimodal_Clustering_for_Unsupervised_Audiovisual_Learning_CVPR_2019_paper.html)
+[11] [Mix and Localize: Localizing Sound Sources in Mixtures](https://openaccess.thecvf.com/content/CVPR2022/html/Hu_Mix_and_Localize_Localizing_Sound_Sources_in_Mixtures_CVPR_2022_paper.html)
+[12] [Class-aware Sounding Objects Localization via Audiovisual Correspondence](https://ieeexplore.ieee.org/abstract/document/9662191/)
+[13] [Audio-Visual Segmentation](https://arxiv.org/abs/2207.05042)

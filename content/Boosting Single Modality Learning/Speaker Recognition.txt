@@ -1,0 +1,25 @@
+# Motivation of audio-visual input
+## Uni-modal information is vulnerable to the variants of environments.
+## Both audio-visual contains personal identities information
+
+
+# Development Route
+## In the early studies of speaker verification and identification, researchers often utilize hand-crafted features and conducted decision fusion to combine audio expert and visual expert [1,2,3,4].
+## As deep learning develops by leaps and bounds, the uni-modal features tend to be extracted by neural networks and more feature-level fusion methods emerge, like attention mechanism [5,6] and concatenation [7], besides decision fusion [7,8]. 
+## After introducing visual modality, studies of diarization include two paths. One path argument diarization performance via integrating uni-modal results [9,10]. Another path extends the diarization task into ``who spoken when and from where'' that further localizes the speech-related region in visual [11,12]. 
+## The natural audio-visual correlation is utilized to design the self-supervised audio-visual diarization method [13]. 
+
+
+[1] [Fusion of Face and Speech Data for Person Identity Verification](https://ieeexplore.ieee.org/document/788647)
+[2] [Multimodal Person Recognition Using Unconstrained Audio and Video](http://alumni.media.mit.edu/~tanzeem/choudhury_avbpa99.pdf)
+[3] [Multi-level Fusion of Audio and Visual Features for Speaker Identification](https://link.springer.com/chapter/10.1007/11608288_66)
+[4] [Audiovisual Celebrity Recognition in Unconstrained Web Videos](https://ieeexplore.ieee.org/document/4959999)
+[5] [Noise-tolerant Audio-visual Online Person Verification Using an Attention-based Neural Network Fusion](https://ieeexplore.ieee.org/abstract/document/8683477)
+[6] [Audio-visual Deep Neural Network for Robust Person Verification](https://ieeexplore.ieee.org/abstract/document/9350195)
+[7] [A Multi-View Approach to Audio-visual Speaker Verification](https://ieeexplore.ieee.org/abstract/document/9414260)
+[8] [Audio-visual Person Recognition in Multimedia Data From the Iarpa Janus Program](https://ieeexplore.ieee.org/abstract/document/8462122)
+[9] [Audio-visual Speaker Diarization Using Fisher Linear Semi-discriminant Analysis](https://link.springer.com/article/10.1007/s11042-014-2274-x)
+[10] [Multimodal Speaker Diarization](https://ieeexplore.ieee.org/abstract/document/5728824)
+[11] [Audio Segmentation and Speaker Localization in Meeting Videos](https://ieeexplore.ieee.org/document/1699413)
+[12] [Who Said That?: Audio-visual Speaker Diarisation Of Real-World Meetings](https://arxiv.org/abs/1906.10042)
+[13] [Self-Supervised Learning for Audio-visual Speaker Diarization](https://ieeexplore.ieee.org/abstract/document/9054376)

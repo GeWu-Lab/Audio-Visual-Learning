@@ -1,0 +1,20 @@
+# Motivation and Goal
+## Build agent with ears as well as eyes.
+## Localizing the sounding object with spatial audio-visual information.
+
+
+# Development Route
+## Chen et al. [1] adopted an end-to-end multi-modal deep reinforcement learning method to explore navigation policies based on a stream of audio-visual observations. 
+## Subsequently, Gan et al. [2] designed a planner to plan the action sequence based on the captured spatial memory as well as observed audio-visual information, while Chen et al. [3] proposed a hierarchical model where an outer policy to produce waypoints and an inner planner to play the path to each waypoint. 
+## Since the prior works assume the target object constantly produces a steady repeating sound, Chen et al. [4] introduced the semantic audio-visual navigation task that the produced sound of the target object is semantically consistent with the scene (e.g., water dripping in the bathroom), to improve the semantic audio-visual understanding of the agent. 
+## The above works often navigate in a clean environment with a single static target sound, for which researchers attempted to extend more complex scenarios with moving and distracting sounds [5,6]. 
+## Relatively but not identically, Majumder et al. [7] proposed to train the agent for separating the target source in the 3D environment via moving around based on audio-visual observations. They adopted a reinforcement learning framework to train the agent to learn the policy to hear better via moving.
+
+
+[1] [SoundSpaces: Audio-Visual Navigation in 3D Environments](https://link.springer.com/chapter/10.1007/978-3-030-58539-6_2)
+[2] [Look, Listen, and Act: Towards Audio-Visual Embodied Navigation](https://ieeexplore.ieee.org/abstract/document/9197008)
+[3] [Learning to Set Waypoints for Audio-Visual Navigation](https://arxiv.org/abs/2008.09622)
+[4] [Semantic Audio-Visual Navigation](https://openaccess.thecvf.com/content/CVPR2021/html/Chen_Semantic_Audio-Visual_Navigation_CVPR_2021_paper.html)
+[5] [Catch Me If You Hear Me: Audio-Visual Navigation in Complex Unmapped Environments with Moving Sounds](https://arxiv.org/abs/2111.14843)
+[6] [Sound Adversarial Audio-Visual Navigation](https://arxiv.org/abs/2202.10910)
+[7] [Move2Hear: Active Audio-Visual Source Separation](https://openaccess.thecvf.com/content/ICCV2021/html/Majumder_Move2Hear_Active_Audio-Visual_Source_Separation_ICCV_2021_paper.html)

@@ -1,0 +1,52 @@
+
+body {
+    background-color: #eee;
+}
+
+.content {
+    margin: 50px auto;
+    text-align: center;
+    width: 80%;
+    display: block;
+
+}
+
+.home-title {
+    background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
+    display: inline-block;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    margin: 1px;
+    width: 98%;
+    border-radius: 10px;
+
+}
+
+.home-title:hover {
+    background-color: #30336b;
+    width: 100%;
+}
+
+.home-title a {
+    font-size: 24px;
+    color: #ffffff !important;
+    letter-spacing: 3px;
+    display: inline-block;
+    text-transform: uppercase;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    text-decoration: none;
+    outline: none;
+    font-family: "helveticaneuemedium";
+    background-color: transparent;
+    padding: 5% 20%;
+
+}
+
+.home-title a:hover {
+    text-decoration: underline;
+}

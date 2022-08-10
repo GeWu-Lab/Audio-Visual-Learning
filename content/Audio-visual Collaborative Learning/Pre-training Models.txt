@@ -1,0 +1,14 @@
+# Motivation and Goal
+## Audio-visual associations provides natural supervision. 
+
+
+# Development Route
+## Omni-perception PreTrainer (OPT) [1] is the first visual-text-audio pre-training model. They designed pretext tasks for training at sample-level, token-level and modality-level, covering masked modality modelling, generation and contrastive learning schemes.
+## In the training of VATT [2] and AudioCLIP [3] model, the contrastive learning approach is also utilized to maximize cross-modal similarities. 
+## Zellers et al. [4] proposed a new contrastive masked span learning objective that the model is trained to figure out which span of audio or text is masked out in the video sequence, besides contrastive learning constrain. 
+
+
+[1] [OPT: Omni-Perception Pre-Trainer for Cross-Modal Understanding and Generation](https://arxiv.org/abs/2107.00249)
+[2] [VATT: Transformers for Multimodal Self-Supervised Learning from Raw Video, Audio and Text](https://proceedings.neurips.cc/paper/2021/hash/cb3213ada48302953cb0f166464ab356-Abstract.html)
+[3] [Audioclip: Extending Clip to Image, Text and Audio](https://ieeexplore.ieee.org/abstract/document/9747631/)
+[4] [MERLOT Reserve: Neural Script Knowledge Through Vision and Language and Sound](https://openaccess.thecvf.com/content/CVPR2022/html/Zellers_MERLOT_Reserve_Neural_Script_Knowledge_Through_Vision_and_Language_and_CVPR_2022_paper.html)
