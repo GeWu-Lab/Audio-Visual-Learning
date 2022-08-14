@@ -2,19 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Audio-visual Learning</title>
+    <title>Learning in Audio-visual</title>
     <link rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style/jquery-rvnm.css">
     <style>
-        .custom-popover {
-            --bs-popover-min-width: 600px;
-            --bs-popover-width: 600px;
-            --bs-popover-border-color: var(--bs-primary);
-            --bs-popover-header-bg: var(--bs-primary);
-            --bs-popover-header-color: var(--bs-white);
-            --bs-popover-body-padding-x: 1rem;
-            --bs-popover-body-padding-y: .5rem;
-        }
-
         .side-bar {
             margin-top: 0 !important;
             text-align: center;
@@ -32,29 +23,95 @@
         a {
             word-break: break-all;
         }
+
+        .menu-item{
+            display: table !important;
+            text-align: center;
+            width: 100%;
+            word-break: break-word;
+        }
     </style>
 </head>
 <body>
 
-<div class="title" style="text-align: center;background-color: #ccc">
-    <div class="my-3 py-3">
-        <h2 class="display-5">Audio-visual Learning</h2>
-        <p class="lead">this is a subtitle.</p>
+<header class="p-3 text-bg-dark" style="/* background: transparent !important; */box-shadow: 5px 5px 10px #777;">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+               style="">
+                <img src="img/logo.png" alt="logo" style="width: 40px; height: 40px;border-radius: 50%">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="index.html" class="nav-link px-2 text-white">Full Survey</a></li>
+                <li class="nav-item dropdown" style="z-index: 99999">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Content
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="sub.html?name=Boosting Single Modality Learning">Boosting
+                            Single Modality Learning</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="sub.html?name=Cross-modal Perception">Cross-modal
+                            Perception</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="sub.html?name=Audio-visual Collaborative Learning">Audio-visual
+                                Collaborative Learning</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link px-2 text-white">Github</a></li>
+            </ul>
+
+        </div>
     </div>
-</div>
-<div class="container" style=";padding-right:20px">
+</header>
+
+
+
+
+<div class="container" style="padding: 16px 0;width: 100%;margin: 0">
+
 
     <div class="row g-3">
         <div class="col-md-4 col-lg-3 side-bar">
-            <div id="item_menu" class="sticky-top btn-group-vertical" role="group"
-                 aria-label="Vertical radio toggle button group"
-                 style="line-height: 100px;background-color:#fff;width: 100%;border-radius: 10px">
-            </div>
+            <!--            <div id="item_menu" class="sticky-top btn-group-vertical" role="group"-->
+            <!--                 aria-label="Vertical radio toggle button group"-->
+            <!--                 style="line-height: 100px;background-color:#fff;width: 100%;border-radius: 10px">-->
+            <!--            </div>-->
+            <nav id="item_menu" class="rvnm-navbar-box dark-ruby sticky-top" style="padding-bottom: 20px;">
+                <ul>
+
+                    <li>
+                        <span class="spliter"><i class="fa fa-cart-plus"></i>menu</span>
+                    </li>
+                    <!--                    <li class="rvnm-expandable">-->
+                    <!--                        <a href="#">-->
+                    <!--                            <i class="fa fa-plus-square"></i> Nunc eleifend molestie velit. Morbi lobortis quam eu velit-->
+                    <!--                        </a>-->
+                    <!--                        <ul>-->
+                    <!--                            <li>-->
+                    <!--                                <a href="#">-->
+                    <!--                                    semper leo-->
+                    <!--                                </a>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </li>-->
+
+                </ul>
+
+            </nav>
+
         </div>
         <div class="col-md-9 col-lg-9"
-             style="background-color: white;margin-top:0;border-radius: 10px;min-height: calc(100vh)">
+             style="background-color: white;margin-top:16px;border-radius: 10px;min-height: calc(100vh)">
             <div class="right-content img">
-                <img style="width: 100%" alt="" src=""/>
+                <img style="width: 80%" alt="" src=""/>
             </div>
             <div class="right-content text" style="display: none; padding: 10px 20px;border-radius: 10px;"></div>
         </div>
@@ -72,8 +129,9 @@
 </div>
 
 <script src="script/jquery-3.6.0.min.js"></script>
-<!--<script src="plugin/popper.min.js"></script>-->
+<script src="plugin/popper.min.js"></script>
 <script src="plugin/bootstrap-5.2.0-dist/js/bootstrap.js"></script>
+<script src="script/jquery-rvnm.js"></script>
 
 <script type="application/javascript">
     (function ($) {
@@ -86,6 +144,8 @@
     })(jQuery);
     var re = /\[((\d+),?)+]/g
     $(function () {
+
+
         const page = {
             "Boosting Single Modality Learning": [
                 [
@@ -127,10 +187,10 @@
             ],
 
         };
-        const colors = ["#286da8", "#cd5360", "#b37d4e", "#438496",]
+        const colors = ["#a5d3ff", "#faa0a9", "#ffcda6", "#a7fff7",]
         const page_name = $.getUrlParam('name');
         const item_arr = page[page_name];
-        let $append = $("#item_menu");
+        let $append = $("#item_menu li");
         let id_index = 0;
         for (let i = 0; i < item_arr.length; i++) {
             const color = colors[i % colors.length];
@@ -139,19 +199,28 @@
                 item = [item];
             }
             for (const text of item) {
-                let $dom_radio = $("<input type=\"radio\" class=\"btn-check\" name=\"vbtn-radio\" autocomplete=\"off\">")
-                let $dom_label = $("<label class=\"btn \" style=';text-decoration: underline;text-align: left;margin: 1px auto; color: " + color + "'></label>")
-                let id = "vbtn-radio" + id_index++;
-                $dom_radio.attr("id", id);
-                $dom_label.attr("for", id);
-                $dom_label.text(text);
-                $dom_label.data("name", text);
+                // let $dom_radio = $("<input type=\"radio\" class=\"btn-check\" name=\"vbtn-radio\" autocomplete=\"off\">")
+                // let $dom_label = $("<label class=\"btn \" style=';text-decoration: underline;text-align: left;margin: 1px auto; color: " + color + "'></label>")
+                // let id = "vbtn-radio" + id_index++;
+                // $dom_radio.attr("id", id);
+                // $dom_label.attr("for", id);
+                // $dom_label.text(text);
+                // $dom_label.data("name", text);
+                // $append.append($dom_radio);
+                // $append.append($dom_label);
 
-                $append.append($dom_radio);
-                $append.append($dom_label);
+                let $dom = $('<li class=""><a class="menu-item"> <i class="fa fa-bullhorn"></i></a></li>');
+                let $dom_a = $dom.find(".menu-item");
+                $dom_a.css('color', color);
+
+                $dom_a.text(text);
+                $dom_a.data("name", text);
+                $append.append($dom);
+
             }
-
+            // $append.append("<hr>")
         }
+        $("#item_menu").rvnm();
 
         $(".right-content.img img").attr("src", "content/" + page_name + "/image.jpg");
         $(".title .lead").text(page_name)
@@ -160,9 +229,10 @@
         refs = {};
 
         $(document)
-            .on("change", ".btn-check", function () {
+            .on("click", ".menu-item", function () {
                 const $this = $(this);
-                const name = $this.next().data("name");
+                debugger
+                const name = $this.data("name");
                 $.get("content/" + page_name + "/" + name + ".txt", function (data) {
                     const $append = $("<div></div>")
                     const split = data.split("\n");

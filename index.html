@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning in Audio-visual</title>
+    <link type="text/css" rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="plugin/jsmind-0.3/style/jsmind.css"/>
+</head>
+<body>
+
+<header class="p-3 text-bg-dark" style="/* background: transparent !important; */box-shadow: 5px 5px 10px #777;">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" style="">
+                <img src="img/logo.png" alt="logo" style="width: 40px; height: 40px;border-radius: 50%">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="index.html" class="nav-link px-2 text-white">Full Survey</a></li>
+                <li class="nav-item dropdown" style="z-index: 99999">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Content
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="sub.html?name=Boosting Single Modality Learning">Boosting
+                            Single Modality Learning</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="sub.html?name=Cross-modal Perception">Cross-modal
+                            Perception</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="sub.html?name=Audio-visual Collaborative Learning">Audio-visual
+                                Collaborative Learning</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link px-2 text-white">Github</a></li>
+            </ul>
+
+        </div>
+    </div>
+</header>
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel"
+     style="box-shadow: 5px 5px 10px #eee;">
+    <div class="carousel-indicators">
+        <!--        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"-->
+        <!--                aria-current="true" aria-label="Slide 1"></button>-->
+        <!--        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
+        <!--        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <div class="d-block w-100"
+                 style="background: linear-gradient(#00adff, #efc1c9);height:600px;/*filter: blur(12px);object-fit: cover;*/">
+            </div>
+            <div class="carousel-caption d-none d-md-block" style="color: #fff;padding-bottom: 16.25rem">
+                <p style="font-size: 50px;font-weight: 700">Learning in Audio-visual</p>
+                <p style="font-weight: 700">A Survey.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">-->
+    <!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <!--        <span class="visually-hidden">Previous</span>-->
+    <!--    </button>-->
+    <!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">-->
+    <!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+    <!--        <span class="visually-hidden">Next</span>-->
+    <!--    </button>-->
+</div>
+
+
+<div id="jsmind_container" style="width: 100%;height:800px;margin: auto;">
+
+</div>
+
+
+<script src="script/jquery-3.6.0.min.js"></script>
+<script src="plugin/popper.min.js"></script>
+<script src="plugin/bootstrap-5.2.0-dist/js/bootstrap.js"></script>
+<script src="plugin/jsmind-0.3/js/jsmind.js"></script>
+<script src="plugin/jsmind-0.3/js/jsmind.draggable.js"></script>
+<script type="application/javascript">
+    $(function () {
+        $.get("content/Audio-visual Learning.md", function (data) {
+            let mind_data = [];
+            let stack = [];
+            let id_index = 0;
+            let last_type = 1;
+            for (let line of data.split("\n")) {
+                const mr = line.match(/^((-)|(###)|(##)|(#)) /);
+                if (mr == null) {
+                    continue
+                }
+                let line_type = mr.length - 1;
+                while (typeof (mr[line_type]) === "undefined") {
+                    line_type--;
+                }
+                line_type = mr.length - line_type
+
+                const line_content = line.substr(mr[0].length);
+
+                let o = {
+                    "id": "#" + (id_index++),
+                    "topic": line_content
+                }
+                if (stack.length === 0) {
+                    o['isroot'] = true
+                } else {
+                    for (let i = line_type; i <= last_type; i++) {
+                        stack.pop();
+                    }
+                    o['parentid'] = stack[stack.length - 1]
+                }
+
+                o["expanded"] = line_type > 3
+
+                stack.push(o['id'])
+                last_type = line_type
+                mind_data.push(o)
+
+
+            }
+            console.log(mind_data)
+            var mind = {
+                "meta": {
+                    "name": "Learning in Audio-visual",
+                    "author": "zhangsan",
+                    "version": "1"
+                },
+                "format": "node_array",
+                "data": mind_data
+            };
+            var options = {
+                container: 'jsmind_container',
+                editable: false,
+                theme: 'orange'
+            };
+            var jm = new jsMind(options);
+            jm.show(mind);
+        }).fail(function (data) {
+            alert("error: " + data.status)
+        })
+    })
+</script>
+</body>
+</html>
