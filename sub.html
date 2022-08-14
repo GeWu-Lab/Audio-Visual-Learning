@@ -21,7 +21,7 @@
         }
 
         a {
-            word-break: break-all;
+            word-break: break-word;
         }
 
         .menu-item {
@@ -91,6 +91,9 @@
 
                     <li>
                         <span class="spliter"><i class="fa fa-cart-plus"></i>menu</span>
+                    </li>
+                    <li>
+                        <hr>
                     </li>
                     <!--                    <li class="rvnm-expandable">-->
                     <!--                        <a href="#">-->
@@ -218,7 +221,7 @@
                 $append.append($dom);
 
             }
-            $append.append("<hr>")
+            $append.append("<li><hr></li>")
         }
         $("#item_menu").rvnm();
 

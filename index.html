@@ -120,7 +120,7 @@
                     o['parentid'] = stack[stack.length - 1]
                 }
 
-                o["expanded"] = line_type > 3
+                o["expanded"] = line_type < 3
 
                 stack.push(o['id'])
                 last_type = line_type
