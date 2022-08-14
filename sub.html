@@ -24,11 +24,15 @@
             word-break: break-all;
         }
 
-        .menu-item{
+        .menu-item {
             display: table !important;
             text-align: center;
             width: 100%;
             word-break: break-word;
+        }
+
+        .right-content a {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -71,8 +75,6 @@
         </div>
     </div>
 </header>
-
-
 
 
 <div class="container" style="padding: 16px 0;width: 100%;margin: 0">
@@ -144,8 +146,6 @@
     })(jQuery);
     var re = /\[((\d+),?)+]/g
     $(function () {
-
-
         const page = {
             "Boosting Single Modality Learning": [
                 [
@@ -187,10 +187,10 @@
             ],
 
         };
-        const colors = ["#a5d3ff", "#faa0a9", "#ffcda6", "#a7fff7",]
+        const colors = ["#d6e8ff", "#ffd0d5", "#cbfdf8", "#ffdcc6",]
         const page_name = $.getUrlParam('name');
         const item_arr = page[page_name];
-        let $append = $("#item_menu li");
+        let $append = $("#item_menu ul");
         let id_index = 0;
         for (let i = 0; i < item_arr.length; i++) {
             const color = colors[i % colors.length];
@@ -218,7 +218,7 @@
                 $append.append($dom);
 
             }
-            // $append.append("<hr>")
+            $append.append("<hr>")
         }
         $("#item_menu").rvnm();
 
@@ -229,9 +229,9 @@
         refs = {};
 
         $(document)
+            .off("click", ".menu-item")
             .on("click", ".menu-item", function () {
                 const $this = $(this);
-                debugger
                 const name = $this.data("name");
                 $.get("content/" + page_name + "/" + name + ".txt", function (data) {
                     const $append = $("<div></div>")
@@ -263,6 +263,7 @@
                 console.log(name)
 
             })
+            .off("click", ".ref")
             .on("click", ".ref", function () {
                 const $this = $(this);
                 const text = $this.text();
