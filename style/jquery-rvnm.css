@@ -390,6 +390,7 @@ body,html{
 
 .rvnm-navbar-box.dark-ruby ul li:hover,.rvnm-navbar-box.dark-ruby ul li.rvnm-collapseable{
     background-color: #f0544c;
+    box-shadow: 0 0 10px #000;
 }
 .rvnm-navbar-box.dark-ruby ul li a,.rvnm-navbar-box.dark-ruby ul li a:visited,.rvnm-navbar-box.dark-ruby ul li span.spliter{
     background: transparent  ;

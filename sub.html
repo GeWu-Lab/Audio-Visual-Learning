@@ -2,10 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Learning in Audio-visual</title>
     <link rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="style/jquery-rvnm.css">
     <style>
+        header {
+            background: transparent;
+            box-shadow: 5px 5px 10px #cccccc47;
+            -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+
+        header a {
+            color: #000000 !important;
+        }
+
+        header.text-bg-light {
+            background-color: #3f51b5 !important;
+        }
+
+        header.text-bg-light a {
+            color: white !important;
+        }
+
+        header.text-bg-light .dropdown-menu a {
+            color: #000000 !important;
+        }
+
         .side-bar {
             margin-top: 0 !important;
             text-align: center;
@@ -38,18 +62,19 @@
 </head>
 <body>
 
-<header class="p-3 text-bg-dark" style="/* background: transparent !important; */box-shadow: 5px 5px 10px #777;">
+<header class="p-3 sticky-top scrolling-navbar">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none"
                style="">
                 <img src="img/logo.png" alt="logo" style="width: 40px; height: 40px;border-radius: 50%">
             </a>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="index.html" class="nav-link px-2 text-white">Full Survey</a></li>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+                style="padding-left: 30px">
+                <li><a href="index.html" class="nav-link px-2 ">Overview</a></li>
                 <li class="nav-item dropdown" style="z-index: 99999">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Content
                     </a>
@@ -69,7 +94,7 @@
                                 Collaborative Learning</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav-link px-2 text-white">Github</a></li>
+                <li><a href="#" class="nav-link px-2">Github</a></li>
             </ul>
 
         </div>
@@ -86,7 +111,7 @@
             <!--                 aria-label="Vertical radio toggle button group"-->
             <!--                 style="line-height: 100px;background-color:#fff;width: 100%;border-radius: 10px">-->
             <!--            </div>-->
-            <nav id="item_menu" class="rvnm-navbar-box dark-ruby sticky-top" style="padding-bottom: 20px;">
+            <nav id="item_menu" class="rvnm-navbar-box dark-doder sticky-top" style="padding-bottom: 20px;">
                 <ul>
 
                     <li>
@@ -114,9 +139,9 @@
 
         </div>
         <div class="col-md-9 col-lg-9"
-             style="background-color: white;margin-top:16px;border-radius: 10px;min-height: calc(100vh)">
-            <div class="right-content img">
-                <img style="width: 80%" alt="" src=""/>
+             style="background-color: white;margin-top:16px;border-radius: 10px;">
+            <div class="right-content img" style="height: calc(100vh)">
+                <img style="width: 100%;" alt="" src=""/>
             </div>
             <div class="right-content text" style="display: none; padding: 10px 20px;border-radius: 10px;"></div>
         </div>
@@ -147,8 +172,21 @@
             return null;
         }
     })(jQuery);
-    var re = /\[((\d+),?)+]/g
+    const re = /\[((\d+),?)+]/g
     $(function () {
+        $(document)
+            .off("scroll")
+            .on("scroll", function () {
+                const top = $(this).scrollTop();
+                // header变色
+                if (top > 50) {
+                    $("header").addClass("text-bg-light");
+                } else {
+                    $("header").removeClass("text-bg-light");
+                }
+            });
+
+
         const page = {
             "Boosting Single Modality Learning": [
                 [

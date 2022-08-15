@@ -2,23 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Learning in Audio-visual</title>
     <link type="text/css" rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="plugin/jsmind-0.3/style/jsmind.css"/>
+    <style>
+        header {
+            background: transparent;
+            box-shadow: 5px 5px 10px #cccccc47;
+            -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+
+        header a {
+            color: #000000 !important;
+        }
+
+        header.text-bg-light {
+            background-color: #3f51b5 !important;
+        }
+
+        header.text-bg-light a {
+            color: white !important;
+        }
+
+        header.text-bg-light .dropdown-menu a {
+            color: #000000 !important;
+        }
+
+
+        .carousel-inner .d-block {
+            height: 700px;
+            filter: blur(7px);
+            object-fit: cover;
+        }
+
+        .carousel-inner .carousel-caption {
+            color: #979797;
+            padding-bottom: 18.25rem;
+            mix-blend-mode: difference;
+        }
+
+        .carousel-inner .carousel-caption p:first-child {
+            font-size: 50px;
+            font-weight: 700;
+            /*background-color: #565e64;*/
+            /*border-radius: 50px;*/
+        }
+
+        .carousel-inner .carousel-caption p:last-child {
+            font-weight: 700;
+        }
+
+        jmexpander {
+            line-height: 8px;
+        }
+
+    </style>
 </head>
 <body>
 
-<header class="p-3 text-bg-dark" style="/* background: transparent !important; */box-shadow: 5px 5px 10px #777;">
+<header class="p-3 sticky-top scrolling-navbar">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" style="">
+            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none"
+               style="">
                 <img src="img/logo.png" alt="logo" style="width: 40px; height: 40px;border-radius: 50%">
             </a>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="index.html" class="nav-link px-2 text-white">Full Survey</a></li>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+                style="padding-left: 30px">
+                <li><a href="index.html" class="nav-link px-2 ">Overview</a></li>
                 <li class="nav-item dropdown" style="z-index: 99999">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Content
                     </a>
@@ -38,42 +94,57 @@
                                 Collaborative Learning</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav-link px-2 text-white">Github</a></li>
+                <li><a href="#" class="nav-link px-2">Github</a></li>
             </ul>
 
         </div>
     </div>
 </header>
 
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel"
-     style="box-shadow: 5px 5px 10px #eee;">
+<div id="carouselExampleDark" class="carousel slide carousel-fade" data-bs-ride="carousel"
+     style="box-shadow: 5px 5px 10px #eee;top: -70px;">
     <div class="carousel-indicators">
-        <!--        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"-->
-        <!--                aria-current="true" aria-label="Slide 1"></button>-->
-        <!--        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
-        <!--        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000">
-            <div class="d-block w-100"
-                 style="background: linear-gradient(#00adff, #efc1c9);height:600px;/*filter: blur(12px);object-fit: cover;*/">
-            </div>
-            <div class="carousel-caption d-none d-md-block" style="color: #fff;padding-bottom: 16.25rem">
-                <p style="font-size: 50px;font-weight: 700">Learning in Audio-visual</p>
-                <p style="font-weight: 700">A Survey.</p>
+        <div class="carousel-item active" data-bs-interval="3000">
+            <img class="d-block w-100" src="content/Boosting Single Modality Learning/image.jpg" alt="">
+            <div class="carousel-caption d-none d-md-block">
+                <p>&lt;Learning in the Audio-visual Context: A Survey&gt;</p>
+                <p></p>
             </div>
 
         </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img class="d-block w-100" src="content/Cross-modal Perception/image.jpg" alt="">
+            <div class="carousel-caption d-none d-md-block">
+                <p>&lt;Learning in the Audio-visual Context: A Survey&gt;</p>
+                <p></p>
+            </div>
+
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img class="d-block w-100" src="content/Audio-visual Collaborative Learning/image.jpg" alt="">
+            <div class="carousel-caption d-none d-md-block">
+                <p>&lt;Learning in the Audio-visual Context: A Survey&gt;</p>
+                <p></p>
+            </div>
+
+        </div>
+
     </div>
 
-    <!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">-->
-    <!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-    <!--        <span class="visually-hidden">Previous</span>-->
-    <!--    </button>-->
-    <!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">-->
-    <!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-    <!--        <span class="visually-hidden">Next</span>-->
-    <!--    </button>-->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
 
@@ -88,7 +159,30 @@
 <script src="plugin/jsmind-0.3/js/jsmind.js"></script>
 <script src="plugin/jsmind-0.3/js/jsmind.draggable.js"></script>
 <script type="application/javascript">
+    let carousel_inner_start_pos = null;
+    let carousel_start_top = null;
     $(function () {
+        $(document)
+            .off("scroll")
+            .on("scroll", function () {
+                var top = $(this).scrollTop();
+
+                //视觉差
+                let $dom_carousel_inner = $(".carousel-inner .carousel-caption");
+                if (carousel_inner_start_pos === null) {
+                    let value = $dom_carousel_inner.css("padding-bottom");
+                    carousel_inner_start_pos = Number(value.substr(0, value.length - 2));
+                }
+                $dom_carousel_inner.css("padding-bottom", (carousel_inner_start_pos + top).toFixed(0) + "px");
+
+                // header变色
+                if (top > 50) {
+                    $("header").addClass("text-bg-light");
+                } else {
+                    $("header").removeClass("text-bg-light");
+                }
+            });
+
         $.get("content/Audio-visual Learning.md", function (data) {
             let mind_data = [];
             let stack = [];
@@ -113,13 +207,14 @@
                 }
                 if (stack.length === 0) {
                     o['isroot'] = true
+                    o['background-color'] = '#000'
                 } else {
                     for (let i = line_type; i <= last_type; i++) {
                         stack.pop();
                     }
                     o['parentid'] = stack[stack.length - 1]
                 }
-
+                o['background-color'] = '#cb3535'
                 o["expanded"] = line_type < 3
 
                 stack.push(o['id'])
@@ -141,10 +236,9 @@
             var options = {
                 container: 'jsmind_container',
                 editable: false,
-                theme: 'orange'
+                theme: 'asphalt'
             };
-            var jm = new jsMind(options);
-            jm.show(mind);
+            jsMind.show(options, mind);
         }).fail(function (data) {
             alert("error: " + data.status)
         })
