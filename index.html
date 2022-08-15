@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Learning in Audio-visual</title>
     <link type="text/css" rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="plugin/jsmind-0.3/style/jsmind.css"/>
+    <link type="text/css" rel="stylesheet" href="plugin/jsmind/style/jsmind.css"/>
     <style>
         header {
             background: transparent;
@@ -54,8 +54,16 @@
             font-weight: 700;
         }
 
-        jmexpander {
-            line-height: 8px;
+        jmnodes jmnode.selected{
+            box-shadow: 2px 2px 10px #c3c3c3;
+        }
+
+        jmnodes jmnode.selected:hover{
+            box-shadow: 2px 2px 10px #c3c3c3;
+        }
+
+        jmnode:hover{
+            box-shadow: 2px 2px 10px #c9c9c9;
         }
 
     </style>
@@ -156,8 +164,7 @@
 <script src="script/jquery-3.6.0.min.js"></script>
 <script src="plugin/popper.min.js"></script>
 <script src="plugin/bootstrap-5.2.0-dist/js/bootstrap.js"></script>
-<script src="plugin/jsmind-0.3/js/jsmind.js"></script>
-<script src="plugin/jsmind-0.3/js/jsmind.draggable.js"></script>
+<script src="plugin/jsmind/js/jsmind.js"></script>
 <script type="application/javascript">
     let carousel_inner_start_pos = null;
     let carousel_start_top = null;
@@ -207,14 +214,16 @@
                 }
                 if (stack.length === 0) {
                     o['isroot'] = true
-                    o['background-color'] = '#000'
                 } else {
                     for (let i = line_type; i <= last_type; i++) {
                         stack.pop();
                     }
                     o['parentid'] = stack[stack.length - 1]
+
+                    o['foreground-color'] = '#ffffff'
+                    o['background-color'] = '#cb3535'
                 }
-                o['background-color'] = '#cb3535'
+
                 o["expanded"] = line_type < 3
 
                 stack.push(o['id'])
@@ -236,7 +245,7 @@
             var options = {
                 container: 'jsmind_container',
                 editable: false,
-                theme: 'asphalt'
+                theme: 'my'
             };
             jsMind.show(options, mind);
         }).fail(function (data) {
