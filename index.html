@@ -32,19 +32,19 @@
 
 
         .carousel-inner .d-block {
-            height: 700px;
+            height: calc(80vh);
             filter: blur(7px);
             object-fit: cover;
         }
 
         .carousel-inner .carousel-caption {
-            color: #979797;
-            padding-bottom: 18.25rem;
+            color: #7d7d7d;
+            padding-bottom: calc(35vh);
             mix-blend-mode: difference;
         }
 
         .carousel-inner .carousel-caption p:first-child {
-            font-size: 50px;
+            font-size: 40px;
             font-weight: 700;
             /*background-color: #565e64;*/
             /*border-radius: 50px;*/
@@ -54,15 +54,15 @@
             font-weight: 700;
         }
 
-        jmnodes jmnode.selected{
+        jmnodes jmnode.selected {
             box-shadow: 2px 2px 10px #c3c3c3;
         }
 
-        jmnodes jmnode.selected:hover{
+        jmnodes jmnode.selected:hover {
             box-shadow: 2px 2px 10px #c3c3c3;
         }
 
-        jmnode:hover{
+        jmnode:hover {
             box-shadow: 2px 2px 10px #c9c9c9;
         }
 
@@ -116,9 +116,21 @@
                 aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <video class="d-block w-100" autoplay loop muted style="filter: blur(5px)">
+                <source src="img/05551400.MP4"
+                        type="video/mp4">
+            </video>
+            <div class="carousel-caption d-none d-md-block">
+                <p>&lt;Learning in the Audio-visual Context: A Survey&gt;</p>
+                <p></p>
+            </div>
+
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
             <img class="d-block w-100" src="content/Boosting Single Modality Learning/image.jpg" alt="">
             <div class="carousel-caption d-none d-md-block">
                 <p>&lt;Learning in the Audio-visual Context: A Survey&gt;</p>
@@ -156,7 +168,7 @@
 </div>
 
 
-<div id="jsmind_container" style="width: 100%;height:800px;margin: auto;">
+<div id="jsmind_container" style="width: 100%;height:calc(100vh);margin: auto;">
 
 </div>
 
@@ -195,6 +207,8 @@
             let stack = [];
             let id_index = 0;
             let last_type = 1;
+            const node_color = ['#ea4a3a', '#ec9951', '#31a4b4'];
+            let color_index = -1;
             for (let line of data.split("\n")) {
                 const mr = line.match(/^((-)|(###)|(##)|(#)) /);
                 if (mr == null) {
@@ -220,12 +234,20 @@
                     }
                     o['parentid'] = stack[stack.length - 1]
 
-                    o['foreground-color'] = '#ffffff'
-                    o['background-color'] = '#cb3535'
+                    if (stack.length === 1) {
+                        color_index = (color_index + 1) % node_color.length;
+                    }
+                    let fade_level = 5;
+                    let fade_value = Math.max((255 * (fade_level - stack.length + 1) / fade_level).toFixed(0), 0);
+                    let fade_value_hex = (fade_value).toString(16);
+                    while (fade_value_hex.length < 2) {
+                        fade_value_hex = '0' + fade_value_hex;
+                    }
+                    o['foreground-color'] = fade_value > 180 ? '#ffffff' : '#111111';
+                    o['background-color'] = node_color[color_index] + fade_value_hex;
                 }
 
                 o["expanded"] = line_type < 3
-
                 stack.push(o['id'])
                 last_type = line_type
                 mind_data.push(o)
@@ -245,9 +267,25 @@
             var options = {
                 container: 'jsmind_container',
                 editable: false,
-                theme: 'my'
+                theme: 'my',
+                mode: 'full',
+                view: {
+                    engine: 'svg'
+                }
             };
-            jsMind.show(options, mind);
+            let jm = jsMind.show(options, mind);
+            jm.add_event_listener(function (type, data) {
+                if (type === jsMind.event_type.select) {
+                    console.log(data);
+                    jm.select_clear();
+                    let node = jm.get_node(data['node']);
+                    if (node.expanded) {
+                        jm.collapse_node(node);
+                    } else {
+                        jm.expand_node(node);
+                    }
+                }
+            })
         }).fail(function (data) {
             alert("error: " + data.status)
         })

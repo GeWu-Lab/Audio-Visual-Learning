@@ -50,15 +50,21 @@ body,html{
 
 .rvnm-navbar-box{
     /*position: absolute;*/
-    /*left: 0px;*/
-    /*top:0;*/
-    /*position: relative;*/
-    /*top: -15px;*/
+    left: -200px;
+    top: 72px;
+    position: fixed;
     width: 220px;
     background: #A0AEC4 ;
     min-height: 50vh;
     overflow-y: hidden;
-    z-index: 99;
+    z-index: 1021;
+
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.rvnm-navbar-box:hover{
+    left: 0;
 }
 
 .rvnm-wrapper{
@@ -553,13 +559,14 @@ body,html{
 
 
 /* Dark doder theme */
-.rvnm-navbar-box.dark-doder{
-    background: #353C48 ;
+.rvnm-navbar-box.dark-doder, .rvnm-navbar-box.dark-doder ul li{
+    background: #f6f6f6;
 }
 
 .rvnm-navbar-box.dark-doder ul li{
-    background: #353C48 ;
-    border-bottom: 0 ;
+
+    border-bottom-color: #c7c7c7;
+    border-bottom-width: 1px;
 }
 
 .rvnm-navbar-box.dark-doder .fa, .rvnm-navbar-box.dark-doder  .search input  {
@@ -573,12 +580,18 @@ body,html{
 .rvnm-navbar-box.dark-doder ul li a,.rvnm-navbar-box.dark-doder ul li a:visited,.rvnm-navbar-box.dark-doder ul li span.spliter{
     background: transparent  ;
     color: #eee;
+    font-weight: 700;
     padding-top: 15px ;
     padding-bottom: 15px;
 }
 
+.rvnm-navbar-box.dark-doder ul li a:hover{
+    color: white!important;
+}
+
 .rvnm-navbar-box.dark-doder ul li span.spliter{
-    opacity: .60;
+    /*opacity: .60;*/
+    opacity: 1;
 }
 
 .rvnm-navbar-box.dark-doder ul li span.spliter:hover{
