@@ -66,6 +66,14 @@
             box-shadow: 2px 2px 10px #c9c9c9;
         }
 
+        jmnode a, jmnode a:hover {
+            color: unset;
+        }
+
+        jmnode p {
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -73,7 +81,8 @@
 <header class="p-3 sticky-top scrolling-navbar">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none"
+            <a href="https://gewu-lab.github.io/" target="_blank"
+               class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none"
                style="">
                 <img src="img/logo.png" alt="logo" style="width: 40px; height: 40px;border-radius: 50%">
             </a>
@@ -81,12 +90,13 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
                 style="padding-left: 30px">
                 <li><a href="index.html" class="nav-link px-2 ">Overview</a></li>
+                <li><a href="#" class="nav-link px-2 ">Full Survey</a></li>
                 <li class="nav-item dropdown" style="z-index: 99999">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Content
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" id="content-page-nav">
                         <li><a class="dropdown-item" href="sub.html?name=Boosting Single Modality Learning">Boosting
                             Single Modality Learning</a></li>
                         <li>
@@ -200,7 +210,8 @@
                 } else {
                     $("header").removeClass("text-bg-light");
                 }
-            });
+            })
+        ;
 
         $.get("content/Audio-visual Learning.md", function (data) {
             let mind_data = [];
@@ -223,8 +234,7 @@
                 const line_content = line.substr(mr[0].length);
 
                 let o = {
-                    "id": "#" + (id_index++),
-                    "topic": line_content
+                    "id": "#" + (id_index++)
                 }
                 if (stack.length === 0) {
                     o['isroot'] = true
@@ -243,11 +253,20 @@
                     while (fade_value_hex.length < 2) {
                         fade_value_hex = '0' + fade_value_hex;
                     }
+
                     o['foreground-color'] = fade_value > 180 ? '#ffffff' : '#111111';
                     o['background-color'] = node_color[color_index] + fade_value_hex;
                 }
 
-                o["expanded"] = line_type < 3
+                o["expanded"] = line_type < 3;
+
+
+                o['line_type'] = line_type;
+                o['node_level'] = color_index;
+                o['item'] = line_content;
+
+
+                o['topic'] = line_content;
                 stack.push(o['id'])
                 last_type = line_type
                 mind_data.push(o)
@@ -276,9 +295,16 @@
             let jm = jsMind.show(options, mind);
             jm.add_event_listener(function (type, data) {
                 if (type === jsMind.event_type.select) {
-                    console.log(data);
                     jm.select_clear();
                     let node = jm.get_node(data['node']);
+                    console.log(data, node)
+                    if (node.children.length === 0) {
+                        debugger
+                        let url = $('#content-page-nav a.dropdown-item').eq(node.data.node_level).attr('href');
+                        url += "#" + node.data.item;
+                        window.location.href = url;
+                        return
+                    }
                     if (node.expanded) {
                         jm.collapse_node(node);
                     } else {

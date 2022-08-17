@@ -12,8 +12,21 @@
 ### Uni-modal Enhancement
 
 - Speech Enhancement and Separation
-- Object Sound Seperation
+- Object Sound Separation
 - Face Super-resolution and Reconstruction
+
+## Cross-modal Perception
+
+### Cross-modal Generation
+
+- Mono Sound Generation
+- Spatial Sound Generation
+- Video Generation
+- Depth Estimation
+
+### Audio-visual Transfer Learning
+
+### Cross-modal Retrieval
 
 ## Audio-visual Collaboration
 
@@ -32,18 +45,3 @@
 ### Audio-visual Event Localization and Parsing
 
 ### Audio-visual Question Answering and Dialog
-
-## Cross-modal Perception
-
-### Cross-modal Generation
-
-- Mono Sound Generation
-- Spatial Sound Generation
-- Video Generation
-- Depth Estimation
-
-### Audio-visual Transfer Learning
-
-### Cross-modal Retrieval
-
-*XMind - Trial Version*
