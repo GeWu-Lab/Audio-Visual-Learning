@@ -6,6 +6,7 @@
     <title>Learning in Audio-visual</title>
     <link type="text/css" rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="plugin/jsmind/style/jsmind.css"/>
+    <link rel="stylesheet" href="plugin/fontawesome-free-6.1.2-web/css/all.css">
     <style>
         header {
             background: transparent;
@@ -130,7 +131,7 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000">
-            <video class="d-block w-100" autoplay loop muted style="filter: blur(5px)">
+            <video id="index-video" class="d-block w-100" autoplay loop muted style="filter: blur(5px)">
                 <source src="img/05551400.MP4"
                         type="video/mp4">
             </video>
@@ -138,7 +139,8 @@
                 <p>&lt;Learning in the Audio-visual Context: A Survey&gt;</p>
                 <p></p>
             </div>
-
+            <span class="mute-video fa fa-volume-xmark" value="#index-video"
+                  style="position: absolute;right: 25px;bottom: 20px;color: white;font-size:  30px"></span>
         </div>
         <div class="carousel-item" data-bs-interval="3000">
             <img class="d-block w-100" src="content/Boosting Single Modality Learning/image.jpg" alt="">
@@ -167,14 +169,14 @@
 
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+    <!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">-->
+    <!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <!--        <span class="visually-hidden">Previous</span>-->
+    <!--    </button>-->
+    <!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">-->
+    <!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+    <!--        <span class="visually-hidden">Next</span>-->
+    <!--    </button>-->
 </div>
 
 
@@ -209,6 +211,20 @@
                     $("header").addClass("text-bg-light");
                 } else {
                     $("header").removeClass("text-bg-light");
+                }
+            })
+            .off("click", ".mute-video")
+            .on("click", ".mute-video", function () {
+                const $this = $(this);
+                const $video = $($this.attr("value"));
+                if($video.prop('muted')){
+                    $video.prop('muted', false);
+                    $this.removeClass("fa-volume-xmark");
+                    $this.addClass("fa-volume-high")
+                }else {
+                    $video.prop('muted', true);
+                    $this.removeClass("fa-volume-high");
+                    $this.addClass("fa-volume-xmark")
                 }
             })
         ;
