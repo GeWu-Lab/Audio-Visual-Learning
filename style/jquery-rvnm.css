@@ -580,7 +580,7 @@ body,html{
 .rvnm-navbar-box.dark-doder ul li a,.rvnm-navbar-box.dark-doder ul li a:visited,.rvnm-navbar-box.dark-doder ul li span.spliter{
     background: transparent  ;
     color: #eee;
-    font-weight: 700;
+    font-weight: 500;
     padding-top: 15px ;
     padding-bottom: 15px;
 }

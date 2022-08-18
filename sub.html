@@ -59,9 +59,6 @@
             cursor: pointer;
         }
 
-        .right-content img {
-            
-        }
     </style>
 </head>
 <body>
@@ -112,7 +109,7 @@
     <ul>
 
         <li>
-            <span class="spliter menu-item" style="font-size: 28px;color: #3f51b5;"><i
+            <span class="spliter menu-item" style="font-size: 28px;color: #3f51b5;font-weight: 900"><i
                     class="fa fa-cart-plus"></i>TOC</span>
         </li>
         <!--                    <li class="rvnm-expandable">-->
@@ -135,7 +132,13 @@
 <div style="padding: 16px 0;width: 100%;margin: auto">
     <div style="background-color: white;border-radius: 10px;margin-left: 220px">
         <div class="right-content img" style="height: calc(100vh);text-align: center">
-            <img style="width: 80%;max-width: 1200px;margin: auto" alt="" src=""/>
+            <div id="first-img">
+<!--                <img style="width: 100%;max-width: 1250px;margin: auto" alt="" src=""/>-->
+            </div>
+            <div id="menu-image" style="display: flex;flex-wrap: wrap;width: 100%;max-width: 1200px;margin: 50px auto">
+
+            </div>
+
         </div>
         <div class="right-content text" style="display: none; padding: 30px 50px;border-radius: 10px;"></div>
     </div>
@@ -184,58 +187,98 @@
 
         const page = {
             "Boosting Single Modality Learning": [
+                "#Audio-visual Recogniton",
                 [
-                    "Speech Recognition",
-                    "Speaker Recognition",
-                    "Action Recognition",
-                    "Emotion Recognition",
+                    "!Speech Recognition",
+                    "!Speaker Recognition",
+                    "!Action Recognition",
+                    "!Emotion Recognition",
                 ],
+                "#Uni-modal Enhancement",
                 [
-                    "Speech Enhancement and Separation",
-                    "Object Sound Separation",
-                    "Face Super-resolution and Reconstruction",
+                    "!Speech Enhancement and Separation",
+                    "!Object Sound Separation",
+                    "!Face Super-resolution and Reconstruction",
                 ]
             ],
             "Cross-modal Perception": [
+                "#Cross-modal Generation",
                 [
-                    "Mono Sound Generation",
-                    "Spatial Sound Generation",
-                    "Video Generation",
-                    "Depth Estimation",
+                    "!Mono Sound Generation",
+                    "!Spatial Sound Generation",
+                    "!Video Generation",
+                    "!Depth Estimation",
                 ],
-                "Audio-visual Transfer Learning",
-                "Cross-modal Retrieval",
+                "#",
+                "!Audio-visual Transfer Learning",
+                "#",
+                "!Cross-modal Retrieval",
             ],
             "Audio-visual Collaborative Learning": [
+                "#Audio-visual Representation Learning",
                 [
                     "Audio-visual Consistency",
                     "Deep Clustering",
                     "Pre-training Models",
                 ],
-
+                "#Audio-visual Localization",
                 [
-                    "Sound Localization in Videos",
-                    "Audio-visual Saliency Detection",
-                    "Audio-visual Navigation",
+                    "!Sound Localization in Videos",
+                    "!Audio-visual Saliency Detection",
+                    "!Audio-visual Navigation",
                 ],
-                "Audio-visual Event Localization and Parsing",
-                "Audio-visual Question Answering and Dialog",
+                "#",
+                "!Audio-visual Event Localization and Parsing",
+                "#",
+                "!Audio-visual Question Answering and Dialog",
             ],
 
         };
+
+
+        const $menu_image = $("#menu-image");
+
         const colors = ["#0450b4", "#c2031a", "#03c2b2", "#ba4702",]
         const page_name = $.getUrlParam('name');
         const item_arr = page[page_name];
         let $append = $("#item_menu ul");
-        let id_index = 0;
         for (let i = 0; i < item_arr.length; i++) {
             const color = colors[i % colors.length];
             let item = item_arr[i];
             if (!(item instanceof Array)) {
+                if (item.startsWith("#")) {
+                    let $dom = $('<div style="color: black;margin: 20px 0 0 0;text-align: center;font-weight: 900;"><i class="fa fa-bullhorn"></i></div>');
+                    $dom.text(item.substr(1));
+                    $append.append($dom);
+                    continue;
+                }
                 item = [item];
             }
             let $dom = null;
-            for (const text of item) {
+            for (let text of item) {
+                if (text.startsWith("!")) {
+                    text = text.substr(1);
+                    let append = true;
+                    const $div = $("<div style='width: 50%;margin 5px;'></div>");
+                    const $img = $("<img class='menu-item' alt='missing' src='' style='width: 100%;cursor: pointer;'/>");
+                    $img.attr('value', text);
+                    $img.data("name", text);
+                    $img.attr("src", "content/" + page_name + "/" + text + ".jpg");
+
+                    //特殊处理
+                    if ("Speech Enhancement and Separation" === text) {
+                        $div.css("width", "100%");
+                    }
+                    if ("Audio-visual Saliency Detection" === text) {
+                        append = false;
+                        $('img[value="Sound Localization in Videos"]').parent().append($img);
+
+                    }
+                    if (append) {
+                        $menu_image.append($div.append($img));
+                    }
+                }
+
                 $dom = $('<li class=""><a class="menu-item"> <i class="fa fa-bullhorn"></i></a></li>');
                 let $dom_a = $dom.find(".menu-item");
                 $dom_a.css('color', color);
@@ -252,7 +295,7 @@
         }
         $("#item_menu").rvnm();
 
-        $(".right-content.img img").attr("src", "content/" + page_name + "/image.jpg");
+        $(".right-content.img #first-img img").attr("src", "content/" + page_name + "/image.jpg");
         $(".title .lead").text(page_name)
         $("title").text(page_name)
 
