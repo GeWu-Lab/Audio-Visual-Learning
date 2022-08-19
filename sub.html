@@ -55,6 +55,19 @@
             word-break: break-word;
         }
 
+        img.menu-item{
+            -webkit-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+        img.menu-item:hover {
+            box-shadow: 0 0 10px #646464;
+            width: 102% !important;
+            position: relative;
+            left: -1%;
+            border-radius: 10px;
+        }
+
         .right-content a {
             cursor: pointer;
         }
@@ -135,7 +148,7 @@
             <div id="first-img">
 <!--                <img style="width: 100%;max-width: 1250px;margin: auto" alt="" src=""/>-->
             </div>
-            <div id="menu-image" style="display: flex;flex-wrap: wrap;width: 100%;max-width: 1200px;margin: 50px auto">
+            <div id="menu-image" style="display: flex;flex-wrap: wrap;width: 100%;max-width: 1200px;margin: 50px auto;overflow: hidden;">
 
             </div>
 
