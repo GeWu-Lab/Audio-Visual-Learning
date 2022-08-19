@@ -314,7 +314,6 @@
                     let node = jm.get_node(data['node']);
                     console.log(data, node)
                     if (node.children.length === 0) {
-                        debugger
                         let url = $('#content-page-nav a.dropdown-item').eq(node.data.node_level).attr('href');
                         url += "#" + node.data.item;
                         window.location.href = url;

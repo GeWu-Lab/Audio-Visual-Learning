@@ -385,7 +385,6 @@
                         let html = marked.parse(line);
                         let $dom = $(html);
                         let $img = $dom.find("img");
-                        debugger
                         $img.each(function () {
                             const $item = $(this);
                             if ($item.attr("src").endsWith(".mp4")) {
