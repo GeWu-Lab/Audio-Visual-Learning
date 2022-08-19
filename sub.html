@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Learning in Audio-visual</title>
+    <title>audio-visual learning</title>
     <link rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="style/jquery-rvnm.css">
     <style>
@@ -55,12 +55,12 @@
             word-break: break-word;
         }
 
-        img.menu-item{
+        .to-menu-item {
             -webkit-transition: all 0.1s ease-in-out;
             transition: all 0.1s ease-in-out;
         }
 
-        img.menu-item:hover {
+        .to-menu-item:hover {
             box-shadow: 0 0 10px #646464;
             width: 102% !important;
             position: relative;
@@ -70,6 +70,16 @@
 
         .right-content a {
             cursor: pointer;
+        }
+
+        .right-content.text video, .right-content.text img {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .level-two-toc-text{
+            color: black !important;
+            font-weight: 900 !important;
         }
 
     </style>
@@ -94,9 +104,12 @@
                        aria-expanded="false">
                         Content
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="sub.html?name=Boosting Single Modality Learning">Boosting
-                            Single Modality Learning</a></li>
+                    <ul class="dropdown-menu" id="content-page-nav">
+                        <li>
+                            <a class="dropdown-item" href="sub.html?name=Audio-visual Boosting">
+                                Audio-visual Boosting
+                            </a>
+                        </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -106,11 +119,14 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="sub.html?name=Audio-visual Collaborative Learning">Audio-visual
-                                Collaborative Learning</a></li>
+                            <a class="dropdown-item" href="sub.html?name=Audio-visual Collaboration">
+                                Audio-visual Collaboration
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav-link px-2">Github</a></li>
+                <li><a href="https://gewu-lab.github.io/awesome-audiovisual-learning/" class="nav-link px-2">Github</a>
+                </li>
             </ul>
 
         </div>
@@ -146,9 +162,10 @@
     <div style="background-color: white;border-radius: 10px;margin-left: 220px">
         <div class="right-content img" style="height: calc(100vh);text-align: center">
             <div id="first-img">
-<!--                <img style="width: 100%;max-width: 1250px;margin: auto" alt="" src=""/>-->
+                <!--                <img style="width: 100%;max-width: 1250px;margin: auto" alt="" src=""/>-->
             </div>
-            <div id="menu-image" style="display: flex;flex-wrap: wrap;width: 100%;max-width: 1200px;margin: 50px auto;overflow: hidden;">
+            <div id="menu-image"
+                 style="display: flex;flex-wrap: wrap;width: 100%;max-width: 1200px;margin: 50px auto;overflow: hidden;">
 
             </div>
 
@@ -182,6 +199,14 @@
             return null;
         }
     })(jQuery);
+
+    function file_name_helper(name, fix) {
+        if (typeof name === "undefined") {
+            fix = "";
+        }
+        return name.replaceAll("/", " and ") + fix;
+    }
+
     const re = /\[((\d+),?)+]/g
     $(function () {
         $("header").addClass("text-bg-light");
@@ -199,8 +224,8 @@
 
 
         const page = {
-            "Boosting Single Modality Learning": [
-                "#Audio-visual Recogniton",
+            "Audio-visual Boosting": [
+                "#Audio-visual Recognition",
                 [
                     "!Speech Recognition",
                     "!Speaker Recognition",
@@ -209,9 +234,9 @@
                 ],
                 "#Uni-modal Enhancement",
                 [
-                    "!Speech Enhancement and Separation",
+                    "!Speech Enhancement/Separation",
                     "!Object Sound Separation",
-                    "!Face Super-resolution and Reconstruction",
+                    "!Face Super-resolution/Reconstruction",
                 ]
             ],
             "Cross-modal Perception": [
@@ -222,28 +247,19 @@
                     "!Video Generation",
                     "!Depth Estimation",
                 ],
-                "#",
                 "!Audio-visual Transfer Learning",
-                "#",
                 "!Cross-modal Retrieval",
             ],
-            "Audio-visual Collaborative Learning": [
-                "#Audio-visual Representation Learning",
-                [
-                    "Audio-visual Consistency",
-                    "Deep Clustering",
-                    "Pre-training Models",
-                ],
+            "Audio-visual Collaboration": [
+                "Audio-visual Representation Learning",
                 "#Audio-visual Localization",
                 [
                     "!Sound Localization in Videos",
                     "!Audio-visual Saliency Detection",
                     "!Audio-visual Navigation",
                 ],
-                "#",
-                "!Audio-visual Event Localization and Parsing",
-                "#",
-                "!Audio-visual Question Answering and Dialog",
+                "!Audio-visual Event Localization/Parsing",
+                "!Audio-visual Question Answering/Dialog",
             ],
 
         };
@@ -260,7 +276,7 @@
             let item = item_arr[i];
             if (!(item instanceof Array)) {
                 if (item.startsWith("#")) {
-                    let $dom = $('<div style="color: black;margin: 20px 0 0 0;text-align: center;font-weight: 900;"><i class="fa fa-bullhorn"></i></div>');
+                    let $dom = $('<div class="level-two-toc-text" style="margin: 20px 0 0 0;text-align: center;"><i class="fa fa-bullhorn"></i></div>');
                     $dom.text(item.substr(1));
                     $append.append($dom);
                     continue;
@@ -273,13 +289,13 @@
                     text = text.substr(1);
                     let append = true;
                     const $div = $("<div style='width: 50%;margin 5px;'></div>");
-                    const $img = $("<img class='menu-item' alt='missing' src='' style='width: 100%;cursor: pointer;'/>");
+                    const $img = $("<img class='to-menu-item' alt='" + text + "' src='' style='width: 100%;cursor: pointer;'/>");
                     $img.attr('value', text);
                     $img.data("name", text);
-                    $img.attr("src", "content/" + page_name + "/" + text + ".jpg");
+                    $img.attr("src", "content/" + page_name + "/" + file_name_helper(text, ".jpg"));
 
                     //特殊处理
-                    if ("Speech Enhancement and Separation" === text) {
+                    if ("Speech Enhancement/Separation" === text) {
                         $div.css("width", "100%");
                     }
                     if ("Audio-visual Saliency Detection" === text) {
@@ -294,11 +310,16 @@
 
                 $dom = $('<li class=""><a class="menu-item"> <i class="fa fa-bullhorn"></i></a></li>');
                 let $dom_a = $dom.find(".menu-item");
-                $dom_a.css('color', color);
 
+                $dom_a.css('color', color);
                 $dom_a.text(text);
                 $dom_a.attr('value', text);
                 $dom_a.data("name", text);
+
+                if(item.length === 1){
+                    $dom_a.addClass("level-two-toc-text");
+                }
+
                 $append.append($dom);
 
             }
@@ -315,6 +336,11 @@
         refs = {};
 
         $(document)
+            .off("click", ".to-menu-item")
+            .on("click", ".to-menu-item", function () {
+                const $this = $(this);
+                $('.menu-item[value="' + $this.data("name") + '"]').trigger('click');
+            })
             .off("click", ".menu-item")
             .on("click", ".menu-item", function () {
                 const $this = $(this);
@@ -324,7 +350,8 @@
                     $(".right-content.img").show();
                     return;
                 }
-                $.get("content/" + page_name + "/" + name + ".txt", function (data) {
+                let file_name = file_name_helper(name, ".md");
+                $.get("content/" + page_name + "/" + file_name, function (data) {
                     const $append = $("<div></div>")
                     $append.append('<h1 style="margin-bottom: 60px">' + name + '</h1>')
                     console.debug(data)
@@ -336,7 +363,7 @@
                             continue;
                         }
 
-                        if (line.startsWith("##")) {
+                        if (line.startsWith("- ") || line.startsWith("## ")) {
                             let $dom = $("<li></li>");
 
                             $dom.html(line.replaceAll(/(\[(((\d+),?)+)])/g, "<a class='ref'>$1</a>").substr(2));
@@ -344,7 +371,7 @@
                             continue;
                         }
 
-                        if (line.startsWith("#")) {
+                        if (line.startsWith("# ")) {
                             $append.append($("<h3></h3>").text(line.substr(1)));
                             continue;
                         }
@@ -355,8 +382,21 @@
                             refs[num] = line;
                             continue;
                         }
+                        let html = marked.parse(line);
+                        let $dom = $(html);
+                        let $img = $dom.find("img");
+                        debugger
+                        $img.each(function () {
+                            const $item = $(this);
+                            if ($item.attr("src").endsWith(".mp4")) {
+                                let $video = $("<video controls>");
+                                $video.attr("src", $item.attr("src"));
+                                $video.attr("alt", $item.attr("alt"));
+                                $item.replaceWith($video);
+                            }
+                        })
 
-                        $append.append(marked.parse(line))
+                        $append.append($dom)
                     }
 
                     $(".right-content.text").html($append)
