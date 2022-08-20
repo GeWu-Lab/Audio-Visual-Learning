@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <!--    <meta name="viewport" content="width=device-width,initial-scale=1"/>-->
     <title>audio-visual learning</title>
     <link type="text/css" rel="stylesheet" href="plugin/bootstrap-5.2.0-dist/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="plugin/jsmind/style/jsmind.css"/>
@@ -20,7 +20,8 @@
         }
 
         header.text-bg-light {
-            background-color: #3f51b5 !important;
+            /* header color */
+            background-color: #ffc107 !important;
         }
 
         header.text-bg-light a {
@@ -34,8 +35,11 @@
 
         .carousel-inner .d-block {
             height: calc(80vh);
-            filter: blur(7px);
             object-fit: cover;
+        }
+
+        .blur {
+            filter: blur(7px);
         }
 
         .carousel-inner .carousel-caption {
@@ -138,7 +142,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="10000">
-                    <video id="index-video" class="d-block w-100" autoplay loop muted style="filter: blur(5px)">
+                    <video id="index-video" class="d-block w-100 blur" autoplay loop muted style="filter: blur(5px)">
                         <source src="img/05551400.MP4"
                                 type="video/mp4">
                     </video>
@@ -149,12 +153,14 @@
                     <span class="mute-video fa fa-volume-xmark" value="#index-video"
                           style="position: absolute;right: 25px;bottom: 20px;color: white;font-size:  30px"></span>
                 </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img class="d-block w-100" src="img/consistency.jpg" alt="">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p>Learning in Audio-visual Context:<br> A Review, Analysis, and New Perspective</p>
-                        <p></p>
+                <div class="carousel-item" data-bs-interval="3000" style="background-color: white;">
+                    <div class="d-block w-100" src="img/consistency.jpg" alt=""
+                         style="background: url('img/consistency.jpg') no-repeat center; background-size: 70% auto">
                     </div>
+                    <!--                    <div class="carousel-caption d-none d-md-block">-->
+                    <!--                        <p>Learning in Audio-visual Context:<br> A Review, Analysis, and New Perspective</p>-->
+                    <!--                        <p></p>-->
+                    <!--                    </div>-->
 
                 </div>
             </div>
@@ -274,6 +280,9 @@
                 }
 
                 o["expanded"] = line_type < 3;
+                if ("Audio-visual Recognition" === line_content) {
+                    o["expanded"] = true;
+                }
 
 
                 o['line_type'] = line_type;
@@ -312,7 +321,6 @@
                 if (type === jsMind.event_type.select) {
                     jm.select_clear();
                     let node = jm.get_node(data['node']);
-                    console.log(data, node)
                     if (node.children.length === 0) {
                         let url = $('#content-page-nav a.dropdown-item').eq(node.data.node_level).attr('href');
                         url += "#" + node.data.item;
