@@ -27,7 +27,7 @@
             color: #EC7357 !important;
         }
 
-        .dropdown .dropdown-item:active{
+        .dropdown .dropdown-item:active {
             background-color: #EC7357 !important;
         }
 
@@ -69,12 +69,23 @@
             transition: all 0.1s ease-in-out;
         }
 
+        #menu-image {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1200px;
+            margin: 50px auto;
+            /*overflow: hidden;*/
+        }
+
         .to-menu-item:hover {
             box-shadow: 0 0 10px #646464;
-            width: 102% !important;
-            position: relative;
-            left: -1%;
+            /*width: 102% !important;*/
+            /*position: relative;*/
+            /*left: -1%;*/
             border-radius: 10px;
+            scale: 1.05;
+            zoom: 1.05;
         }
 
         .right-content a {
@@ -86,7 +97,7 @@
             max-width: 800px;
         }
 
-        .level-two-toc-text{
+        .level-two-toc-text {
             color: black !important;
             font-weight: 900 !important;
         }
@@ -173,8 +184,7 @@
             <div id="first-img">
                 <!--                <img style="width: 100%;max-width: 1250px;margin: auto" alt="" src=""/>-->
             </div>
-            <div id="menu-image"
-                 style="display: flex;flex-wrap: wrap;width: 100%;max-width: 1200px;margin: 50px auto;overflow: hidden;">
+            <div id="menu-image">
 
             </div>
 
@@ -325,7 +335,7 @@
                 $dom_a.attr('value', text);
                 $dom_a.data("name", text);
 
-                if(item.length === 1){
+                if (item.length === 1) {
                     $dom_a.addClass("level-two-toc-text");
                 }
 
