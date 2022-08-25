@@ -54,15 +54,15 @@
                     }
                     $(settings.wrapper).removeClass('rvnm-mobile');
                     $(self).removeClass('rvnm-mobile');
-                    $(settings.wrapper).addClass('rvnm-minimal');
-                    $(self).addClass('rvnm-minimal');
+                    // $(settings.wrapper).addClass('rvnm-minimal');
+                    // $(self).addClass('rvnm-minimal');
                 }
                 // if window size less than 450 active mobile mode
                 if ($(window).width() <= 450) {
                     $(settings.wrapper).removeClass('rvnm-minimal');
                     $(self).removeClass('rvnm-minimal');
-                    $(settings.wrapper).addClass('rvnm-mobile');
-                    $(self).addClass('rvnm-mobile');
+                    // $(settings.wrapper).addClass('rvnm-mobile');
+                    // $(self).addClass('rvnm-mobile');
                 }
                 // if window size greater than 768 active desktop mode by
                 // remove minimal & mobile calss
@@ -105,14 +105,14 @@
             $(settings.wrapper).addClass('rvnm-wrapper');
             // check if minimal mode active change mode
             if ($(this).hasClass('rvnm-minimal') || settings.mode === 'minimal') {
-                $(settings.wrapper).addClass('rvnm-minimal');
-                $(this).addClass('rvnm-minimal');
+                // $(settings.wrapper).addClass('rvnm-minimal');
+                // $(this).addClass('rvnm-minimal');
                 settings.mode = 'minimal';
             }
             // check if mobile mode active change mode
             if ($(this).hasClass('rvnm-minimal') || settings.mode === 'mobile') {
-                $(settings.wrapper).addClass('rvnm-mobile');
-                $(this).addClass('rvnm-mobile');
+                // $(settings.wrapper).addClass('rvnm-mobile');
+                // $(this).addClass('rvnm-mobile');
                 settings.mode = 'mobile';
             }
 
@@ -285,13 +285,13 @@
                     return true;
                 }
                 if (mode === 'minimal') {
-                    $(settings.wrapper).addClass('rvnm-minimal');
-                    $(self).addClass('rvnm-minimal');
+                    // $(settings.wrapper).addClass('rvnm-minimal');
+                    // $(self).addClass('rvnm-minimal');
                     return true;
                 }
                 if (mode === 'mobile') {
-                    $(settings.wrapper).addClass('rvnm-mobile');
-                    $(self).addClass('rvnm-mobile');
+                    // $(settings.wrapper).addClass('rvnm-mobile');
+                    // $(self).addClass('rvnm-mobile');
                     return true;
                 }
             },
